@@ -29,7 +29,7 @@ public class PrintTextLocations extends PDFTextStripper {
 
         PDDocument document=null;
         try {
-            File input=new File("D://result.pdf");
+            File input=new File("D://test.pdf");
             document=PDDocument.load(input);
             if (document.isEncrypted()) {
                 document.decrypt("");
@@ -52,7 +52,7 @@ public class PrintTextLocations extends PDFTextStripper {
 
         System.out.println(list_text.size());
         for (int i=0; i < list_text.size(); i++) {
-            System.out.println(list_text.get(i));
+            System.out.println("第"+i+"行："+list_text.get(i));
         }
 
     }
