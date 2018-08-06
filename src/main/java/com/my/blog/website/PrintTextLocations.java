@@ -11,11 +11,14 @@ import org.apache.pdfbox.util.TextPosition;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-/*测试读取pdf文件中的内容*/
+
+/**
+ * 测试读取pdf文件中的内容
+ */
 public class PrintTextLocations extends PDFTextStripper {
 
-    static List<Float> list_postion = new ArrayList<Float>();
-    static List<String> list_text = new ArrayList<String>();
+    static List<Float> list_postion=new ArrayList<Float>();
+    static List<String> list_text=new ArrayList<String>();
 
 
     public PrintTextLocations() throws IOException {
@@ -24,19 +27,19 @@ public class PrintTextLocations extends PDFTextStripper {
 
     public static void main(String[] args) throws Exception {
 
-        PDDocument document = null;
+        PDDocument document=null;
         try {
-            File input = new File("D://result.pdf");
-            document = PDDocument.load(input);
+            File input=new File("D://result.pdf");
+            document=PDDocument.load(input);
             if (document.isEncrypted()) {
                 document.decrypt("");
             }
-            PrintTextLocations printer = new PrintTextLocations();
-            List allPages = document.getDocumentCatalog().getAllPages();
-            for (int i = 0; i < allPages.size(); i++) {
-                PDPage page = (PDPage) allPages.get(i);
+            PrintTextLocations printer=new PrintTextLocations();
+            List allPages=document.getDocumentCatalog().getAllPages();
+            for (int i=0; i < allPages.size(); i++) {
+                PDPage page=(PDPage) allPages.get(i);
                 System.out.println("Processing page: " + i);
-                PDStream contents = page.getContents();
+                PDStream contents=page.getContents();
                 if (contents != null) {
                     printer.processStream(page, page.findResources(), page.getContents().getStream());
                 }
@@ -48,8 +51,8 @@ public class PrintTextLocations extends PDFTextStripper {
         }
 
         System.out.println(list_text.size());
-        for(int i = 0;i < list_text.size();i++){
-            System.out.println(list_text.get(i) );
+        for (int i=0; i < list_text.size(); i++) {
+            System.out.println(list_text.get(i));
         }
 
     }
@@ -61,7 +64,7 @@ public class PrintTextLocations extends PDFTextStripper {
     protected void processTextPosition(TextPosition text) {
         System.out.println("String[" + text.getXDirAdj() + ","
                 + text.getYDirAdj() + " fs=" + text.getFontSize() + " xscale="
-                + text.getXScale()+ " yscale="
+                + text.getXScale() + " yscale="
                 + text.getYScale() + " height=" + text.getHeightDir() + " space="
                 + text.getWidthOfSpace() + " width="
                 + text.getWidthDirAdj() + " x="
