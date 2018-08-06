@@ -11,7 +11,7 @@ import org.apache.pdfbox.util.TextPosition;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+/*测试读取pdf文件中的内容*/
 public class PrintTextLocations extends PDFTextStripper {
 
     static List<Float> list_postion = new ArrayList<Float>();
